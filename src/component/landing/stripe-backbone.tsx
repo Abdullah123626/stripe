@@ -4,12 +4,11 @@ import React, { useState, useEffect, useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 
 export default function StripeBackboneGrid() {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0); // "sticks" here after hover/click
+const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+const [activeIndex, setActiveIndex] = useState<number | null>(0); // "sticks" here after hover/click
   const [isGraphHovered, setIsGraphHovered] = useState(false);
   const [themeIndex, setThemeIndex] = useState(2); // start on "Daytime"
-  const autoCycleRef = useRef(null);
-
+const autoCycleRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const metrics = [
     { value: "135+", label: "currencies and payment methods supported" },
     { value: "$1.9T", label: "in payments volume processed in 2025" },
@@ -28,19 +27,26 @@ export default function StripeBackboneGrid() {
 
   const theme = themes[themeIndex];
 
-  useEffect(() => {
-    autoCycleRef.current = setInterval(() => {
-      setThemeIndex((i) => (i + 1) % themes.length);
-    }, 3200);
-    return () => clearInterval(autoCycleRef.current);
-  }, []);
+ useEffect(() => {
+  autoCycleRef.current = setInterval(() => {
+    setThemeIndex((i) => (i + 1) % themes.length);
+  }, 3200);
 
-  const restartAutoCycle = () => {
-    clearInterval(autoCycleRef.current);
-    autoCycleRef.current = setInterval(() => {
-      setThemeIndex((i) => (i + 1) % themes.length);
-    }, 3200);
+  return () => {
+    if (autoCycleRef.current !== null) {
+      clearInterval(autoCycleRef.current);
+    }
   };
+}, []);
+const restartAutoCycle = () => {
+  if (autoCycleRef.current !== null) {
+    clearInterval(autoCycleRef.current);
+  }
+
+  autoCycleRef.current = setInterval(() => {
+    setThemeIndex((i) => (i + 1) % themes.length);
+  }, 3200);
+};
 
   const totalSpikes = 140;
   const linesArray = useMemo(() => Array.from({ length: totalSpikes }), []);
@@ -76,28 +82,38 @@ export default function StripeBackboneGrid() {
           onMouseLeave={() => setHoveredIndex(null)}
         >
           {/* Gradient indicator bar — ABOVE the active metric, slides to whichever is active */}
-          <motion.div
-            className="hidden lg:block absolute -top-3 h-[2px] rounded-full pointer-events-none"
-            style={{ background: indicatorGradient }}
-            animate={{
-              left: `${(displayIndex * 100) / 4}%`,
-              width: `${100 / 4}%`,
-              opacity: 1,
-            }}
-            transition={{ type: "spring", stiffness: 320, damping: 32, mass: 0.7 }}
-          />
+        <motion.div
+  className="hidden lg:block absolute -top-3 h-[2px] rounded-full pointer-events-none"
+  style={{ background: indicatorGradient }}
+  animate={{
+    left: `${((displayIndex ?? 0) * 100) / 4}%`,
+    width: `${100 / 4}%`,
+    opacity: 1,
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 320,
+    damping: 32,
+    mass: 0.7,
+  }}
+/>
 
           {/* Gradient indicator bar — BELOW the active metric, mirrors the top one */}
           <motion.div
-            className="hidden lg:block absolute -bottom-5 h-[2px] rounded-full pointer-events-none"
-            style={{ background: indicatorGradient }}
-            animate={{
-              left: `${(displayIndex * 100) / 4}%`,
-              width: `${100 / 4}%`,
-              opacity: 1,
-            }}
-            transition={{ type: "spring", stiffness: 320, damping: 32, mass: 0.7 }}
-          />
+  className="hidden lg:block absolute -bottom-5 h-[2px] rounded-full pointer-events-none"
+  style={{ background: indicatorGradient }}
+  animate={{
+    left: `${((displayIndex ?? 0) * 100) / 4}%`,
+    width: `${100 / 4}%`,
+    opacity: 1,
+  }}
+  transition={{
+    type: "spring",
+    stiffness: 320,
+    damping: 32,
+    mass: 0.7,
+  }}
+/>
 
           {metrics.map((item, idx) => {
             const isActive = displayIndex === idx;
