@@ -77,9 +77,10 @@ const LOGOS = [
 /* ─── Infinite Logo Ticker ───────────────────────────────── */
 function LogoTicker() {
   const trackRef = useRef<HTMLDivElement>(null);
-  const posRef   = useRef(0);
-  const rafRef   = useRef<number>(0);
+  const posRef = useRef(0);
+  const rafRef = useRef<number>(0);
   const pausedRef = useRef(false);
+
   const SPEED = 0.45;
 
   useEffect(() => {
@@ -89,37 +90,98 @@ function LogoTicker() {
     const animate = () => {
       if (!pausedRef.current) {
         posRef.current -= SPEED;
+
         const half = track.scrollWidth / 2;
-        if (Math.abs(posRef.current) >= half) posRef.current = 0;
-        track.style.transform = `translateX(${posRef.current}px)`;
+
+        if (Math.abs(posRef.current) >= half) {
+          posRef.current = 0;
+        }
+
+        track.style.transform = `translate3d(${posRef.current}px,0,0)`;
       }
+
       rafRef.current = requestAnimationFrame(animate);
     };
 
     rafRef.current = requestAnimationFrame(animate);
+
     return () => cancelAnimationFrame(rafRef.current);
   }, []);
 
   return (
-  <div
-  className="relative z-30 w-full overflow-hidden border-t border-[#e9eaec] 
-             mt-6 md:mt-12 lg:mt-30 
-             px-4 sm:px-6 md:px-8 
-             h-auto min-h-[10vh] md:h-[13vh]"
-  onMouseEnter={() => { pausedRef.current = true; }}
-  onMouseLeave={() => { pausedRef.current = false; }}
->
-      <div className="flex h-full items-center" ref={trackRef} style={{ willChange: "transform", width: "max-content" }}>
+    <div
+      className="
+        relative
+        w-full
+        overflow-hidden
+        border-t
+        border-[#e9eaec]
+
+        mt-8
+        sm:mt-10
+        md:mt-14
+        lg:mt-22
+        xl:mt-12
+
+        h-20
+        sm:h-24
+        md:h-24
+        lg:h-14
+     
+        lg:right-30
+
+        px-4
+        sm:px-6
+        lg:px-8
+      "
+      onMouseEnter={() => (pausedRef.current = true)}
+      onMouseLeave={() => (pausedRef.current = false)}
+    >
+      <div
+        ref={trackRef}
+        style={{
+          width: "max-content",
+          willChange: "transform",
+        }}
+        className="flex items-center h-full"
+      >
         {[...LOGOS, ...LOGOS].map((logo, i) => (
           <div
             key={`${logo.name}-${i}`}
-            className="flex items-center justify-center px-10 h-full hover:opacity-90 transition-opacity duration-200 flex-shrink-0"
+            className="
+              flex-shrink-0
+              flex
+              items-center
+              justify-center
+
+              px-5
+              sm:px-7
+              md:px-9
+              lg:px-10
+              xl:px-12
+
+              h-full
+
+              transition-opacity
+              duration-300
+              hover:opacity-80
+            "
           >
-            {logo.el}
+            <div
+              className="
+                scale-75
+                sm:scale-90
+                md:scale-100
+                origin-center
+              "
+            >
+              {logo.el}
+            </div>
           </div>
         ))}
       </div>
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-screen h-px bg-[#e9eaec]" />
+
+      <div className="absolute bottom-0 left-0 w-full h-px bg-[#e9eaec]" />
     </div>
   );
 }
@@ -339,10 +401,21 @@ export default function HeroSection() {
         </div>
 
         {/* Logo Ticker Wrapper */}
-        <div className="relative z-20 mt-auto right-22 w-full max-w-[1180px] mx-auto h-[82px] ">
-          <LogoTicker />
-        </div>
-
+      <div
+  className="
+    relative
+    z-20
+    mt-auto
+    w-full
+    max-w-8xl
+    mx-auto
+    px-4
+    sm:px-6
+    lg:px-8
+  "
+>
+  <LogoTicker />
+</div>
       </section>
     </div>
   );
