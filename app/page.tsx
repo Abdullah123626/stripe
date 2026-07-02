@@ -1,5 +1,6 @@
 import FlexibleSolution from "@/src/component/landing/flexible-solutions";
 import HeroSection from "@/src/component/landing/hero-section";
+import HertzShowcase from "@/src/component/landing/hertz-showcase";
 import StripeBackboneGrid from "@/src/component/landing/stripe-backbone";
 import PremiumFeatureGrid from "@/src/component/landing/stripe-feature";
 import StripePlatformGrid from "@/src/component/landing/stripe-platform";
@@ -11,10 +12,30 @@ export default function Home() {
           <Navbar />
           <HeroSection />
           <FlexibleSolution/>
-          <PremiumFeatureGrid/>
-          <StripePlatformGrid/>
-          <StripeBackboneGrid/>
+           <PremiumFeatureGrid/>
+         {/* <StripePlatformGrid/>
+          <StripeBackboneGrid/> */}
+
+          {/* <div className="w-full text-left flex justify-start ml-10 mt-5">
+        <p className="text-[#6B7280] text-[24px] leading-7 max-w-[700px]">
+          <span className="font-[600] text-slate-800">
+            Powering businesses of all sizes.{" "}
+          </span>
+          <span className="font-[500] ">
+          Run your business on a reliable platform that adapts to your needs.
+          </span>
+        </p>
       </div>
+
+         < div className="w-full h-[1px] bg-[#E5E7EB] mt-8">
+          </div> */}
+
+ {/* hertzshow case 
+      <HertzShowcase/> */}
+
+      </div>
+
+     
     </div>
   );
 }

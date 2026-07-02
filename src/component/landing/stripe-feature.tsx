@@ -63,7 +63,149 @@ const StyleSheet = () => (
       color: #ffffff;
       transform: rotate(90deg);
     }
-  `}</style>
+
+
+    .pfgAurora1{
+    animation:pfgAuroraMove1 16s ease-in-out infinite;
+    will-change:transform;
+}
+
+.pfgAurora2{
+    animation:pfgAuroraMove2 18s ease-in-out infinite;
+    will-change:transform;
+}
+
+.pfgAurora3{
+    animation:pfgAuroraMove3 14s ease-in-out infinite;
+    will-change:transform;
+}
+
+
+/* ===========================
+   Stripe Inspired Chat Motion
+=========================== */
+
+@keyframes pfgChatFloat {
+
+  0%{
+    transform:translateY(10px);
+    opacity:0;
+  }
+
+  20%{
+    transform:translateY(0);
+    opacity:1;
+  }
+
+  80%{
+    transform:translateY(0);
+    opacity:1;
+  }
+
+  100%{
+    transform:translateY(-2px);
+    opacity:1;
+  }
+
+}
+
+@keyframes pfgProductAppear{
+
+0%{
+opacity:0;
+transform:translateY(30px) scale(.96);
+}
+
+35%{
+opacity:0;
+}
+
+60%{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+100%{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+}
+
+@keyframes pfgButtonGlow{
+
+0%,100%{
+box-shadow:0 0 0 rgba(37,99,235,0);
+}
+
+50%{
+box-shadow:
+0 0 25px rgba(37,99,235,.20);
+}
+
+}
+
+.pfgChat1{
+
+animation:pfgChatFloat 5s ease infinite;
+
+}
+
+.pfgChat2{
+
+animation:pfgChatFloat 5s ease infinite .7s both;
+
+}
+
+.pfgProducts{
+
+animation:pfgProductAppear 5s ease infinite;
+
+}
+
+.pfgBuyBtn{
+
+animation:pfgButtonGlow 3s ease infinite;
+
+}
+
+@keyframes pfgLightSweep{
+
+0%{
+transform:translateX(-140%) rotate(28deg);
+opacity:0;
+}
+
+15%{
+opacity:.35;
+}
+
+40%{
+opacity:.8;
+}
+
+60%{
+opacity:.45;
+}
+
+100%{
+transform:translateX(230%) rotate(28deg);
+opacity:0;
+}
+
+}
+
+.pfgLightSweep{
+
+animation:pfgLightSweep 8s linear infinite;
+
+will-change:transform;
+
+}
+
+  `
+  
+  }</style>
 );
 
 function ExpandIcon({ className = "w-4 h-4" }) {
@@ -84,59 +226,108 @@ function ExpandIcon({ className = "w-4 h-4" }) {
    ============================================================ */
 function CardAgenticCommerce() {
   return (
-    <div className="pfg-card relative overflow-hidden bg-white border border-slate-100 rounded-3xl p-7 flex flex-col justify-between min-h-[520px] shadow-sm">
+    <div className="pfg-card relative overflow-hidden transition-all duration-500 bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7 flex flex-col justify-between min-h-[400px] sm:min-h-[430px] shadow-sm">
       {/* Soft ambient blob background (matches reference: gentle glow, not particles) */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div
-          className="absolute -top-16 left-1/2 -translate-x-1/2 w-[380px] h-[380px] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(244,114,182,0.45) 0%, rgba(192,132,252,0.35) 45%, transparent 75%)",
-            animation: "pfg-blobPulse 7s ease-in-out infinite",
-          }}
-        />
-        <div
-          className="absolute top-10 -right-10 w-[220px] h-[220px] rounded-full blur-2xl"
-          style={{
-            background: "radial-gradient(circle, rgba(253,186,116,0.35) 0%, transparent 70%)",
-            animation: "pfg-blobPulse 9s ease-in-out infinite 1s",
-          }}
-        />
-      </div>
+   {/* Stripe-inspired Aurora Background */}
+<div className="absolute inset-0 overflow-hidden pointer-events-none">
 
+  {/* Base */}
+  <div className="absolute inset-0 bg-[#FFFDFB]" />
+
+  {/* Aurora 1 */}
+  <div
+    className="absolute -top-36 -left-20 w-[520px] h-[520px] rounded-full blur-[90px] opacity-80 pfgAurora1"
+    style={{
+      background:
+        "radial-gradient(circle at center,#F472B6 0%,#C084FC 38%,transparent 72%)",
+    }}
+  />
+
+  {/* Aurora 2 */}
+  <div
+    className="absolute -bottom-40 right-[-120px] w-[500px] h-[500px] rounded-full blur-[95px] opacity-80 pfgAurora2"
+    style={{
+      background:
+        "radial-gradient(circle at center,#FDE68A 0%,#FB7185 40%,transparent 72%)",
+    }}
+  />
+
+  {/* Purple wash */}
+  <div
+    className="absolute left-1/2 top-1/2 w-[650px] h-[650px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[120px] opacity-60 pfgAurora3"
+    style={{
+      background:
+        "radial-gradient(circle,#DDD6FE 0%,transparent 70%)",
+    }}
+  />
+
+  {/* Noise Overlay */}
+  <div
+    className="absolute inset-0 opacity-[0.03]"
+    style={{
+      backgroundImage:
+        "radial-gradient(#000 0.7px, transparent 0.7px)",
+      backgroundSize: "22px 22px",
+    }}
+  />
+</div>
+
+{/* Glass Light Sweep */}
+<div className="absolute inset-0 overflow-hidden">
+
+  <div
+    className="absolute
+               top-[-40%]
+               left-[-65%]
+               w-[70%]
+               h-[220%]
+               rotate-[28deg]
+               pfgLightSweep"
+    style={{
+      background:
+        "linear-gradient(90deg,transparent 0%,rgba(255,255,255,.55) 48%,rgba(255,255,255,.18) 60%,transparent 100%)",
+      filter: "blur(18px)",
+    }}
+  />
+
+</div>
       {/* Title header */}
       <div className="relative z-10 flex justify-between items-start">
-        <h3 className="text-[24px] font-medium tracking-tight text-[#0F172A] max-w-[220px] leading-tight">
+        <h3 className="text-[20px] sm:text-[22px] lg:text-[24px] font-medium tracking-tight text-[#0F172A] max-w-full sm:max-w-[220px] leading-tight">
           Monetize through <br />
           agentic commerce
         </h3>
-        <button className="pfg-icon-btn p-1.5 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm">
+        <button className="pfg-icon-btn p-1.5 sm:p-2 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm flex-shrink-0">
           <ExpandIcon />
         </button>
       </div>
 
       {/* Chat + product mockup */}
-      <div className="relative z-10 mt-5 space-y-3">
+      <div className="relative z-10 mt-4 sm:mt-5 space-y-2 sm:space-y-3">
         {/* User message — dark bubble */}
-        <div className="bg-[#0F172A] rounded-2xl rounded-bl-sm p-3 shadow-md max-w-[86%] text-[11px] text-white leading-relaxed font-medium">
+        <div 
+  className="bg-[#0F172A] rounded-2xl rounded-bl-sm p-2.5 sm:p-3 shadow-md max-w-full sm:max-w-[86%] text-[10px] sm:text-[11px] text-white leading-relaxed font-medium pfgChat1"
+>
           I'm refreshing my wardrobe. Can you recommend some cozy, comfortable basics in size M?
         </div>
 
         {/* Assistant reply — light bubble */}
-        <div className="bg-slate-100 rounded-2xl rounded-br-sm p-3 shadow-sm max-w-[86%] ml-auto text-[11px] text-slate-700 leading-relaxed font-medium">
+        <div 
+  className="bg-slate-100 rounded-2xl rounded-br-sm p-2.5 sm:p-3 shadow-sm max-w-full sm:max-w-[86%] ml-auto text-[10px] sm:text-[11px] text-slate-700 leading-relaxed font-medium pfgChat2"
+>
           Absolutely. Here are a few comfy essentials that pair well and could be a good starting point:
         </div>
 
         {/* Product card block */}
-        <div className="bg-white rounded-2xl p-3.5 shadow-xl border border-slate-100 space-y-3.5">
-          <div className="grid grid-cols-2 gap-3 text-[10px]">
-            <div className="border border-slate-100 rounded-xl p-2.5 bg-[#F8FAFC]">
-              <div className="h-20 w-full bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] rounded-lg flex items-center justify-center text-white text-2xl mb-2 shadow-sm">
+        <div className="bg-white rounded-2xl p-3.5 shadow-xl border border-slate-100 space-y-3.5 pfgProducts">
+          <div  className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[9px] sm:text-[10px]">
+            <div className="border border-slate-100 rounded-xl p-2 sm:p-2.5 bg-[#F8FAFC]">
+              <div className="h-16 sm:h-20 w-full bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] rounded-lg flex items-center justify-center text-white text-xl sm:text-2xl mb-2 shadow-sm">
                 👕
               </div>
-              <p className="font-bold text-slate-900 text-[11px]">Deluxe Shirt</p>
+              <p className="font-bold text-slate-900 text-[10px] sm:text-[11px]">Deluxe Shirt</p>
               <p className="text-slate-400 font-medium text-[9px] mt-0.5">Blue · Medium</p>
-              <p className="font-extrabold text-slate-900 mt-2 text-[11px]">$28.00</p>
+              <p className="font-extrabold text-slate-900 mt-2 text-[10px] sm:text-[11px]">$28.00</p>
               <p className="text-[8px] text-slate-400 font-normal mt-0.5">Cartsy</p>
             </div>
             <div className="border border-slate-100 rounded-xl p-2.5 bg-[#F8FAFC]">
@@ -149,8 +340,7 @@ function CardAgenticCommerce() {
               <p className="text-[8px] text-slate-400 font-normal mt-0.5">Cartsy</p>
             </div>
           </div>
-          <button className="w-full bg-[#EBF2FE] hover:bg-[#2563EB] text-[#2563EB] hover:text-white rounded-xl py-2.5 text-center font-bold text-[11px] transition-all duration-200">
-            Buy now
+<button className="w-full bg-[#EBF2FE] hover:bg-[#2563EB] text-[#2563EB] hover:text-white rounded-xl py-2 sm:py-2.5 text-center font-bold text-[10px] sm:text-[11px] transition-all duration-200 pfgBuyBtn">            Buy now
           </button>
         </div>
       </div>
@@ -165,7 +355,7 @@ function CardAgenticCommerce() {
    ============================================================ */
 function CardIssuing() {
   return (
-    <div className="pfg-card relative overflow-hidden bg-white border border-slate-100 rounded-3xl p-7 flex flex-col justify-between min-h-[520px] shadow-sm">
+    <div className="pfg-card relative overflow-hidden bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7 flex flex-col justify-between min-h-[400px] sm:min-h-[430px] shadow-sm">
       {/* Vivid mesh background */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div
@@ -188,29 +378,29 @@ function CardIssuing() {
 
       {/* Title header */}
       <div className="relative z-10 flex justify-between items-start">
-        <h3 className="text-[24px] font-medium tracking-tight text-[#0F172A] max-w-[220px] leading-tight">
+        <h3 className="text-[20px] sm:text-[22px] lg:text-[24px] font-medium tracking-tight text-[#0F172A] max-w-full sm:max-w-[220px] leading-tight">
           Create a card <br />
           issuing program
         </h3>
-        <button className="pfg-icon-btn p-1.5 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm">
+        <button className="pfg-icon-btn p-1.5 sm:p-2 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm flex-shrink-0">
           <ExpandIcon />
         </button>
       </div>
 
       {/* Floating physical card */}
-      <div className="relative z-10 my-auto flex items-center justify-center pt-6">
+      <div className="relative z-10 my-auto flex items-center justify-center pt-4 sm:pt-6">
         <div
-          className="w-[215px] h-[310px] rounded-[26px] p-5 shadow-2xl relative border border-white/70 flex flex-col justify-between overflow-hidden"
+          className="w-[170px] sm:w-[190px] lg:w-[215px] h-[245px] sm:h-[275px] lg:h-[310px] rounded-[20px] sm:rounded-[24px] lg:rounded-[26px] p-4 sm:p-5 shadow-2xl relative border border-white/70 flex flex-col justify-between overflow-hidden"
           style={{
             background: "linear-gradient(160deg, #F9A8D4 0%, #C084FC 55%, #FDBA74 100%)",
             animation: "pfg-cardFloat 5s ease-in-out infinite",
           }}
         >
-          <div className="absolute inset-0 bg-white/10 rounded-[26px] pointer-events-none mix-blend-overlay" />
+          <div className="absolute inset-0 bg-white/10 rounded-[20px] sm:rounded-[24px] lg:rounded-[26px] pointer-events-none mix-blend-overlay" />
 
           {/* Chip + contactless icon */}
           <div className="flex justify-between items-center relative z-10 mt-10">
-            <div className="w-9 h-7 bg-gradient-to-br from-amber-100 to-amber-200 rounded-md border border-amber-400/30 shadow-inner flex p-1">
+            <div className="w-7 h-6 sm:w-8 sm:h-6 lg:w-9 lg:h-7 bg-gradient-to-br from-amber-100 to-amber-200 rounded-md">
               <div className="grid grid-cols-3 gap-[2px] w-full h-full opacity-50">
                 <div className="border-r border-b border-amber-700/40" />
                 <div className="border-r border-b border-amber-700/40" />
@@ -233,7 +423,7 @@ function CardIssuing() {
 
           {/* Brand */}
           <div className="flex justify-end relative z-10 mb-1">
-            <span className="text-white font-black italic tracking-wider text-xl select-none drop-shadow-sm">
+            <span className="text-white font-black italic tracking-wider text-lg sm:text-xl select-none drop-shadow-sm">
               VISA
             </span>
           </div>
@@ -270,7 +460,7 @@ function CardBorderless() {
   }, []);
 
   return (
-    <div className="pfg-card relative overflow-hidden bg-white border border-slate-100 rounded-3xl p-7 flex flex-col justify-between min-h-[520px] shadow-sm">
+    <div className="pfg-card relative overflow-hidden bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7 flex flex-col justify-between min-h-[400px] sm:min-h-[430px] shadow-sm">
       {/* Dense dotted wave / globe-style background */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-end justify-center">
         <div className="absolute bottom-0 w-[120%] h-[280px] bg-gradient-to-t from-[#6366F1]/10 via-[#D946EF]/5 to-transparent rounded-t-[100%]" />
@@ -314,25 +504,25 @@ function CardBorderless() {
 
       {/* Title header */}
       <div className="relative z-10 flex justify-between items-start">
-        <h3 className="text-[24px] font-medium tracking-tight text-[#0F172A] max-w-[260px] leading-tight">
+        <h3 className="text-[20px] sm:text-[22px] lg:text-[24px] font-medium tracking-tight text-[#0F172A] max-w-full sm:max-w-[260px] leading-tight">
           Access borderless money movement with <br />
           stablecoins and crypto
         </h3>
-        <button className="pfg-icon-btn p-1.5 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm">
+        <button className="pfg-icon-btn p-1.5 sm:p-2 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm flex-shrink-0">
           <ExpandIcon />
         </button>
       </div>
 
       {/* Floating amount badge */}
-      <div className="relative z-10 mt-auto w-full flex justify-end pr-2 pb-14">
+      <div className="relative z-10 mt-auto w-full flex justify-center sm:justify-end pr-0 sm:pr-2 pb-6 sm:pb-14">
         <div
-          className="bg-white border border-slate-200/80 rounded-xl p-2.5 flex items-center space-x-2.5 shadow-xl text-[10px] font-bold text-slate-900"
+          className="bg-white border border-slate-200/80 rounded-xl p-2 sm:p-2.5 flex items-center space-x-2 sm:space-x-2.5 shadow-xl text-[9px] sm:text-[10px] font-bold text-slate-900"
           style={{ animation: "pfg-badgeFloat 4s ease-in-out infinite" }}
         >
-          <div className="w-5 h-5 rounded-full bg-[#4F46E5] flex items-center justify-center text-white text-[9px] font-black shadow-md">
+          <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#4F46E5] flex items-center justify-center text-white text-[8px] sm:text-[9px] font-black shadow-md">
             ⬦
           </div>
-          <span className="tracking-tight font-extrabold text-slate-800">$631.50</span>
+          <span className="tracking-tight font-extrabold text-slate-800 text-[9px] sm:text-[10px]">$631.50</span>
         </div>
       </div>
     </div>
@@ -344,9 +534,9 @@ function CardBorderless() {
    ============================================================ */
 export default function PremiumFeatureGrid() {
   return (
-    <div className="w-full bg-white px-6 md:px-10 py-10 box-border select-none">
+    <div  className="w-full bg-white px-4 sm:px-6 md:px-8 lg:px-10 py-8 sm:py-10 box-border select-none overflow-x-hidden">
       <StyleSheet />
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-6">
         <CardAgenticCommerce />
         <CardIssuing />
         <CardBorderless />
