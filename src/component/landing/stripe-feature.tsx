@@ -81,6 +81,31 @@ const StyleSheet = () => (
 }
 
 
+@keyframes pfgProductFloat {
+
+0%{
+transform:translateY(0px);
+}
+
+50%{
+transform:translateY(-4px);
+}
+
+100%{
+transform:translateY(0px);
+}
+
+}
+
+.pfgProductThumb{
+
+animation:pfgProductFloat 4s ease-in-out infinite;
+
+transition:transform .35s ease;
+
+}
+
+
 /* ===========================
    Stripe Inspired Chat Motion
 =========================== */
@@ -203,6 +228,112 @@ will-change:transform;
 
 }
 
+
+
+/* ===========================
+Stripe Conversation Timeline
+=========================== */
+
+@keyframes pfgUserAppear{
+
+0%{
+opacity:0;
+transform:translateY(16px);
+}
+
+10%{
+opacity:1;
+transform:translateY(0);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes pfgAssistantAppear{
+
+0%,18%{
+opacity:0;
+transform:translateY(18px);
+}
+
+35%{
+opacity:1;
+transform:translateY(0);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@keyframes pfgProductsReveal{
+
+0%,40%{
+opacity:0;
+transform:translateY(24px) scale(.96);
+}
+
+60%{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+100%{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+}
+
+@keyframes pfgBuyReveal{
+
+0%,65%{
+opacity:0;
+transform:translateY(10px);
+}
+
+80%{
+opacity:1;
+transform:translateY(0);
+}
+
+100%{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.pfgChatUser{
+
+animation:pfgUserAppear 7s ease infinite;
+
+}
+
+.pfgChatAssistant{
+
+animation:pfgAssistantAppear 7s ease infinite;
+
+}
+
+.pfgProductsReveal{
+
+animation:pfgProductsReveal 7s ease infinite;
+
+}
+
+.pfgBuyReveal{
+
+animation:pfgBuyReveal 7s ease infinite;
+
+}
+
   `
   
   }</style>
@@ -303,44 +434,82 @@ function CardAgenticCommerce() {
       </div>
 
       {/* Chat + product mockup */}
-      <div className="relative z-10 mt-4 sm:mt-5 space-y-2 sm:space-y-3">
+      <div className="relative z-10 mt-4 sm:mt-5 space-y-2 sm:space-y-3 overflow-hidden">
         {/* User message — dark bubble */}
         <div 
-  className="bg-[#0F172A] rounded-2xl rounded-bl-sm p-2.5 sm:p-3 shadow-md max-w-full sm:max-w-[86%] text-[10px] sm:text-[11px] text-white leading-relaxed font-medium pfgChat1"
+
+  className="bg-[#0F172A] rounded-2xl rounded-bl-sm p-2.5 sm:p-3 shadow-md max-w-full sm:max-w-[86%] text-[10px] sm:text-[11px] text-white leading-relaxed font-medium pfgChatUser"
 >
           I'm refreshing my wardrobe. Can you recommend some cozy, comfortable basics in size M?
         </div>
 
         {/* Assistant reply — light bubble */}
         <div 
-  className="bg-slate-100 rounded-2xl rounded-br-sm p-2.5 sm:p-3 shadow-sm max-w-full sm:max-w-[86%] ml-auto text-[10px] sm:text-[11px] text-slate-700 leading-relaxed font-medium pfgChat2"
+
+  className="bg-slate-100 rounded-2xl rounded-br-sm p-2.5 sm:p-3 shadow-sm max-w-full sm:max-w-[86%] ml-auto text-[10px] sm:text-[11px] text-slate-700 leading-relaxed font-medium pfgChatAssistant"
 >
           Absolutely. Here are a few comfy essentials that pair well and could be a good starting point:
         </div>
 
         {/* Product card block */}
-        <div className="bg-white rounded-2xl p-3.5 shadow-xl border border-slate-100 space-y-3.5 pfgProducts">
+        <div className="bg-white rounded-2xl p-3.5 shadow-xl border border-slate-100 space-y-3.5 pfgProductsReveal">
           <div  className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[9px] sm:text-[10px]">
             <div className="border border-slate-100 rounded-xl p-2 sm:p-2.5 bg-[#F8FAFC]">
-              <div className="h-16 sm:h-20 w-full bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] rounded-lg flex items-center justify-center text-white text-xl sm:text-2xl mb-2 shadow-sm">
-                👕
-              </div>
+            <div className="relative h-16 sm:h-20 w-full pfgProductThumb rounded-lg overflow-hidden mb-2 shadow-sm bg-gradient-to-br from-[#EEF4FF] via-[#DCEBFF] to-[#BFD8FF]">
+
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,.9),transparent_55%)]" />
+
+  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+
+    <div className="relative">
+
+      <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[#2F6BFF] blur-md opacity-30 absolute left-1/2 -translate-x-1/2 top-5" />
+
+      <div className="relative w-9 sm:w-10 h-8 bg-[#3B82F6] rounded-t-[12px] mx-auto" />
+
+      <div className="relative w-12 sm:w-14 h-8 bg-[#2563EB] rounded-b-[14px] -mt-1" />
+
+      <div className="absolute left-1/2 top-1 -translate-x-1/2 w-3 h-3 rounded-full border border-white/40" />
+
+    </div>
+
+  </div>
+
+</div>
               <p className="font-bold text-slate-900 text-[10px] sm:text-[11px]">Deluxe Shirt</p>
               <p className="text-slate-400 font-medium text-[9px] mt-0.5">Blue · Medium</p>
               <p className="font-extrabold text-slate-900 mt-2 text-[10px] sm:text-[11px]">$28.00</p>
               <p className="text-[8px] text-slate-400 font-normal mt-0.5">Cartsy</p>
             </div>
             <div className="border border-slate-100 rounded-xl p-2.5 bg-[#F8FAFC]">
-              <div className="h-20 w-full bg-gradient-to-br from-[#1E293B] to-[#0F172A] rounded-lg flex items-center justify-center text-white text-2xl mb-2 shadow-sm">
-                🧥
-              </div>
+           <div className="relative h-16 sm:h-20 w-full rounded-lg overflow-hidden mb-2 shadow-sm bg-gradient-to-br from-[#EEF2F7] via-[#D8E2EE] to-[#C7D3E5]">
+
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,.9),transparent_55%)]" />
+
+  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+
+    <div className="relative">
+
+      <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-slate-900 blur-md opacity-25 absolute left-1/2 -translate-x-1/2 top-5" />
+
+      <div className="relative w-9 sm:w-10 h-8 bg-[#1E293B] rounded-t-[12px] mx-auto" />
+
+      <div className="relative w-12 sm:w-14 h-8 bg-[#0F172A] rounded-b-[14px] -mt-1" />
+
+      <div className="absolute left-1/2 top-1 -translate-x-1/2 w-3 h-3 rounded-full border border-white/30" />
+
+    </div>
+
+  </div>
+
+</div>
               <p className="font-bold text-slate-900 text-[11px]">Essential Hoodie</p>
               <p className="text-slate-400 font-medium text-[9px] mt-0.5">Navy · Medium</p>
               <p className="font-extrabold text-slate-900 mt-2 text-[11px]">$48.00</p>
               <p className="text-[8px] text-slate-400 font-normal mt-0.5">Cartsy</p>
             </div>
           </div>
-<button className="w-full bg-[#EBF2FE] hover:bg-[#2563EB] text-[#2563EB] hover:text-white rounded-xl py-2 sm:py-2.5 text-center font-bold text-[10px] sm:text-[11px] transition-all duration-200 pfgBuyBtn">            Buy now
+<button className="w-full bg-[#EBF2FE] hover:bg-[#2563EB] text-[#2563EB] hover:text-white rounded-xl py-2 sm:py-2.5 text-center font-bold text-[10px] sm:text-[11px] transition-all duration-200 pfgBuyReveal">            Buy now
           </button>
         </div>
       </div>
