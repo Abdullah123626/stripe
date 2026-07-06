@@ -81,6 +81,90 @@ const StyleSheet = () => (
 }
 
 
+/* ============================
+   Stripe Inspired Text Reveal
+============================ */
+
+@keyframes pfgRevealMask{
+
+0%{
+clip-path:inset(0 100% 0 0);
+opacity:0;
+}
+
+15%{
+opacity:1;
+}
+
+100%{
+clip-path:inset(0 0 0 0);
+opacity:1;
+}
+
+}
+
+@keyframes pfgCursor{
+
+0%,45%{
+opacity:1;
+}
+
+50%,100%{
+opacity:0;
+}
+
+}
+
+.pfgUserText{
+
+display:inline-block;
+
+animation:
+pfgRevealMask .9s cubic-bezier(.22,.61,.36,1) forwards;
+
+}
+
+.pfgAssistantText{
+
+display:inline-block;
+
+animation:
+pfgRevealMask 1.2s cubic-bezier(.22,.61,.36,1) .7s both;
+
+position:relative;
+
+}
+
+.pfgAssistantText::after{
+
+content:"";
+
+position:absolute;
+
+right:-3px;
+
+top:2px;
+
+width:2px;
+
+height:80%;
+
+background:#64748B;
+
+animation:pfgCursor .8s infinite;
+
+}
+
+.pfgBuyText{
+
+display:inline-block;
+
+animation:
+pfgRevealMask .7s ease 2s both;
+
+}
+
+
 @keyframes pfgProductFloat {
 
 0%{
@@ -131,6 +215,46 @@ transition:transform .35s ease;
     transform:translateY(-2px);
     opacity:1;
   }
+
+}
+
+@keyframes pfgCardReveal{
+
+0%,60%{
+
+opacity:0;
+
+transform:
+translateY(18px)
+scale(.96);
+
+}
+
+100%{
+
+opacity:1;
+
+transform:
+translateY(0)
+scale(1);
+
+}
+
+}
+
+.pfgCardOne{
+
+animation:
+pfgCardReveal
+6s ease infinite;
+
+}
+
+.pfgCardTwo{
+
+animation:
+pfgCardReveal
+6s ease .25s infinite both;
 
 }
 
@@ -228,6 +352,132 @@ will-change:transform;
 
 }
 
+
+
+
+/* ===========================
+   Stripe Network Nodes
+=========================== */
+
+@keyframes pfgNodePulse{
+
+0%,100%{
+
+transform:scale(1);
+
+opacity:.7;
+
+}
+
+50%{
+
+transform:scale(1.8);
+
+opacity:1;
+
+}
+
+}
+
+.pfgNode1{
+
+animation:pfgNodePulse 2.5s ease infinite;
+
+transform-origin:center;
+
+}
+
+.pfgNode2{
+
+animation:pfgNodePulse 3s ease .5s infinite;
+
+transform-origin:center;
+
+}
+
+.pfgNode3{
+
+animation:pfgNodePulse 2.8s ease 1s infinite;
+
+transform-origin:center;
+
+}
+
+.pfgNode4{
+
+animation:pfgNodePulse 3.2s ease 1.5s infinite;
+
+transform-origin:center;
+
+}
+
+
+
+/* ===========================
+Stripe Payment Badge
+=========================== */
+
+@keyframes pfgBadgeFloat{
+
+0%{
+
+transform:
+translateY(0px)
+scale(1);
+
+}
+
+50%{
+
+transform:
+translateY(-10px)
+scale(1.03);
+
+}
+
+100%{
+
+transform:
+translateY(0px)
+scale(1);
+
+}
+
+}
+
+@keyframes pfgReflection{
+
+0%{
+
+transform:
+translateX(-180px)
+rotate(28deg);
+
+}
+
+100%{
+
+transform:
+translateX(260px)
+rotate(28deg);
+
+}
+
+}
+
+.pfgPaymentBadge{
+
+animation:
+pfgBadgeFloat 5s ease-in-out infinite;
+
+}
+
+.pfgReflection{
+
+animation:
+pfgReflection 6s linear infinite;
+
+}
 
 
 /* ===========================
@@ -331,6 +581,43 @@ animation:pfgProductsReveal 7s ease infinite;
 .pfgBuyReveal{
 
 animation:pfgBuyReveal 7s ease infinite;
+
+}
+
+
+/* ===================================
+   Stripe Network Line Animation
+=================================== */
+
+@keyframes pfgDashMove{
+
+0%{
+
+stroke-dashoffset:120;
+
+}
+
+100%{
+
+stroke-dashoffset:0;
+
+}
+
+}
+
+.pfgBorderPath{
+
+animation:
+pfgDashMove 6s linear infinite;
+
+}
+
+.pfgBorderPath2{
+
+animation:
+pfgDashMove 8s linear reverse infinite;
+
+opacity:.45;
 
 }
 
@@ -440,21 +727,23 @@ function CardAgenticCommerce() {
 
   className="bg-[#0F172A] rounded-2xl rounded-bl-sm p-2.5 sm:p-3 shadow-md max-w-full sm:max-w-[86%] text-[10px] sm:text-[11px] text-white leading-relaxed font-medium pfgChatUser"
 >
-          I'm refreshing my wardrobe. Can you recommend some cozy, comfortable basics in size M?
-        </div>
+<span className="pfgUserText">
+I'm refreshing my wardrobe. Can you recommend some cozy, comfortable basics in size M?
+</span>        </div>
 
         {/* Assistant reply — light bubble */}
         <div 
 
   className="bg-slate-100 rounded-2xl rounded-br-sm p-2.5 sm:p-3 shadow-sm max-w-full sm:max-w-[86%] ml-auto text-[10px] sm:text-[11px] text-slate-700 leading-relaxed font-medium pfgChatAssistant"
 >
-          Absolutely. Here are a few comfy essentials that pair well and could be a good starting point:
-        </div>
+<span className="pfgAssistantText">
+  Absolutely. Here are a few comfy essentials that pair well and could be a good starting point:
+</span>        </div>
 
         {/* Product card block */}
         <div className="bg-white rounded-2xl p-3.5 shadow-xl border border-slate-100 space-y-3.5 pfgProductsReveal">
           <div  className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[9px] sm:text-[10px]">
-            <div className="border border-slate-100 rounded-xl p-2 sm:p-2.5 bg-[#F8FAFC]">
+            <div className="border border-slate-100 rounded-xl pfgCardOne  p-2 sm:p-2.5 bg-[#F8FAFC]">
             <div className="relative h-16 sm:h-20 w-full pfgProductThumb rounded-lg overflow-hidden mb-2 shadow-sm bg-gradient-to-br from-[#EEF4FF] via-[#DCEBFF] to-[#BFD8FF]">
 
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,.9),transparent_55%)]" />
@@ -481,7 +770,7 @@ function CardAgenticCommerce() {
               <p className="font-extrabold text-slate-900 mt-2 text-[10px] sm:text-[11px]">$28.00</p>
               <p className="text-[8px] text-slate-400 font-normal mt-0.5">Cartsy</p>
             </div>
-            <div className="border border-slate-100 rounded-xl p-2.5 bg-[#F8FAFC]">
+            <div className="border border-slate-100 rounded-xl  pfgCardTwo p-2.5 bg-[#F8FAFC]">
            <div className="relative h-16 sm:h-20 w-full rounded-lg overflow-hidden mb-2 shadow-sm bg-gradient-to-br from-[#EEF2F7] via-[#D8E2EE] to-[#C7D3E5]">
 
   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,.9),transparent_55%)]" />
@@ -509,7 +798,9 @@ function CardAgenticCommerce() {
               <p className="text-[8px] text-slate-400 font-normal mt-0.5">Cartsy</p>
             </div>
           </div>
-<button className="w-full bg-[#EBF2FE] hover:bg-[#2563EB] text-[#2563EB] hover:text-white rounded-xl py-2 sm:py-2.5 text-center font-bold text-[10px] sm:text-[11px] transition-all duration-200 pfgBuyReveal">            Buy now
+<button className="w-full bg-[#EBF2FE] hover:bg-[#2563EB] text-[#2563EB] hover:text-white rounded-xl py-2 sm:py-2.5 text-center font-bold text-[10px] sm:text-[11px] transition-all duration-200 pfgBuyReveal">          <span className="pfgBuyText">
+Buy now
+</span>
           </button>
         </div>
       </div>
@@ -629,47 +920,128 @@ function CardBorderless() {
   }, []);
 
   return (
-    <div className="pfg-card relative overflow-hidden bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7 flex flex-col justify-between min-h-[400px] sm:min-h-[430px] shadow-sm">
+    <div className="group pfg-card relative overflow-hidden bg-white border border-slate-100 rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-7 flex flex-col justify-between min-h-[400px] sm:min-h-[430px] shadow-sm">
       {/* Dense dotted wave / globe-style background */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden flex items-end justify-center">
-        <div className="absolute bottom-0 w-[120%] h-[280px] bg-gradient-to-t from-[#6366F1]/10 via-[#D946EF]/5 to-transparent rounded-t-[100%]" />
+      {/* Stripe Inspired Background */}
+<div className="absolute inset-0 overflow-hidden pointer-events-none">
 
-        <div className="absolute bottom-[-50px] w-[110%] h-[320px]">
-          {dots.map((d) => (
-            <div
-              key={d.id}
-              className="absolute rounded-full"
-              style={{
-                width: `${d.size}px`,
-                height: `${d.size}px`,
-                left: `${d.left}%`,
-                top: `${d.top}px`,
-                backgroundColor: d.color,
-                animation: `pfg-dotFloat ${d.duration}s ease-in-out ${d.delay}s infinite`,
-              }}
-            />
-          ))}
+  {/* Base */}
+  <div className="absolute inset-0 bg-[#FCFCFD]" />
 
-          {/* Connecting arcs */}
-          <svg className="w-full h-full absolute inset-0 opacity-60" viewBox="0 0 400 320" fill="none">
-            <defs>
-              <linearGradient id="pfg-globe-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#4F46E5" />
-                <stop offset="50%" stopColor="#EC4899" />
-                <stop offset="100%" stopColor="#F97316" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M 15,220 Q 180,20 360,200"
-              stroke="url(#pfg-globe-gradient)"
-              strokeWidth="1.5"
-              strokeDasharray="6 6"
-              style={{ animation: "pfg-dash 6s linear infinite" }}
-            />
-            <path d="M 40,190 Q 210,70 330,230" stroke="url(#pfg-globe-gradient)" strokeWidth="0.75" opacity="0.5" />
-          </svg>
-        </div>
-      </div>
+  {/* Aurora */}
+  <div
+    className="absolute -top-32 -left-24 w-[520px] h-[520px] rounded-full blur-[90px] pfgBorderGlow1"
+    style={{
+      background:
+        "radial-gradient(circle,#C4B5FD 0%,transparent 70%)",
+    }}
+  />
+
+  <div
+    className="absolute -bottom-28 -right-20 w-[420px] h-[420px] rounded-full blur-[90px] pfgBorderGlow2"
+    style={{
+      background:
+        "radial-gradient(circle,#93C5FD 0%,transparent 70%)",
+    }}
+  />
+
+  {/* Network SVG */}
+  <svg
+    className="absolute inset-0 w-full h-full"
+    viewBox="0 0 600 420"
+    fill="none"
+  >
+
+    <defs>
+
+      <linearGradient id="borderGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+
+        <stop offset="0%" stopColor="#4F46E5"/>
+
+        <stop offset="50%" stopColor="#8B5CF6"/>
+
+        <stop offset="100%" stopColor="#EC4899"/>
+
+      </linearGradient>
+
+    </defs>
+
+   <path
+  d="M-40 330
+  C120 180
+  260 140
+  420 250
+  S650 240
+  720 170"
+
+  stroke="url(#borderGradient)"
+  strokeWidth="2"
+  strokeLinecap="round"
+
+  strokeDasharray="8 10"
+
+  className="pfgBorderPath"
+/>
+
+    <path
+
+      d="M-20 360
+      C160 250
+      300 220
+      470 300
+      S650 270
+      720 210"
+
+      stroke="url(#borderGradient)"
+
+      strokeOpacity=".45"
+
+      strokeWidth="1"
+
+      strokeLinecap="round"
+
+      className="pfgBorderPath2"
+      strokeDasharray="6 10"
+
+    />
+
+    {/* Glowing Nodes */}
+
+<circle
+  cx="120"
+  cy="235"
+  r="5"
+  fill="#4F46E5"
+  className="pfgNode1"
+/>
+
+<circle
+  cx="245"
+  cy="170"
+  r="4"
+  fill="#8B5CF6"
+  className="pfgNode2"
+/>
+
+<circle
+  cx="380"
+  cy="230"
+  r="5"
+  fill="#EC4899"
+  className="pfgNode3"
+/>
+
+<circle
+  cx="520"
+  cy="205"
+  r="4"
+  fill="#3B82F6"
+  className="pfgNode4"
+/>
+
+  </svg>
+
+</div>
 
       {/* Title header */}
       <div className="relative z-10 flex justify-between items-start">
@@ -677,21 +1049,42 @@ function CardBorderless() {
           Access borderless money movement with <br />
           stablecoins and crypto
         </h3>
-        <button className="pfg-icon-btn p-1.5 sm:p-2 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm flex-shrink-0">
+        <button className="pfg-icon-btn transition-all duration-300 group-hover:rotate-45 p-1.5 sm:p-2 text-purple-600 bg-purple-50/80 backdrop-blur-sm rounded-md shadow-sm flex-shrink-0">
           <ExpandIcon />
         </button>
       </div>
 
       {/* Floating amount badge */}
+      {/* Glass Reflection */}
+
+<div
+
+className="absolute inset-0 rounded-2xl overflow-hidden"
+
+>
+
+<div
+
+className="absolute
+-top-8
+-left-16
+w-24
+h-40
+rotate-[28deg]
+bg-white/40
+blur-xl
+pfgReflection"
+
+/>
+
+</div>
       <div className="relative z-10 mt-auto w-full flex justify-center sm:justify-end pr-0 sm:pr-2 pb-6 sm:pb-14">
-        <div
-          className="bg-white border border-slate-200/80 rounded-xl p-2 sm:p-2.5 flex items-center space-x-2 sm:space-x-2.5 shadow-xl text-[9px] sm:text-[10px] font-bold text-slate-900"
-          style={{ animation: "pfg-badgeFloat 4s ease-in-out infinite" }}
-        >
-          <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-[#4F46E5] flex items-center justify-center text-white text-[8px] sm:text-[9px] font-black shadow-md">
-            ⬦
+      <div
+  className="relative overflow-hidden transition-all duration-500 group-hover:scale-[1.03]  bg-white/75 backdrop-blur-xl border border-white/70 rounded-2xl p-2.5 sm:p-3 flex items-center space-x-2.5 shadow-[0_15px_40px_rgba(15,23,42,.12)] text-[9px] sm:text-[10px] font-bold text-slate-900 pfgPaymentBadge"
+>
+<div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-br from-[#6366F1] to-[#8B5CF6] flex items-center justify-center text-white text-[9px] font-black shadow-lg shadow-indigo-500/30">            ⬦
           </div>
-          <span className="tracking-tight font-extrabold text-slate-800 text-[9px] sm:text-[10px]">$631.50</span>
+        <span className="tracking-tight font-extrabold text-slate-800 text-[10px] sm:text-[11px]">$631.50</span>
         </div>
       </div>
     </div>
