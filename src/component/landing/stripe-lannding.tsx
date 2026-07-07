@@ -73,64 +73,182 @@ export default function StripeLanding() {
       {/* ======================================================================
           SECTION 2: GRAPHIC PORTION (Mobile par floating boxes hidden hain)
          ====================================================================== */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
-        <div 
-          className="rounded-3xl p-6 sm:p-12 lg:p-24 relative min-h-[380px] sm:min-h-[550px] lg:min-h-[680px] flex items-center justify-center overflow-hidden bg-cover bg-center shadow-sm"
-          style={{
-            backgroundImage: `url('https://images.stripeassets.com/fzn2n1nzq965/5dQAw5oJf3TOO1Jt6IKDRH/f391594c11f38d821259acdd3412a7a6/platform-graphic-background_2x.png?w=1632&fm=webp&q=90')`
-          }}
-        >
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl border border-gray-100/80 p-4 sm:p-6 relative z-10">
-            <div className="flex items-center gap-1.5 mb-4 border-b border-gray-100 pb-3">
+   <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-16">
+      <div 
+        className="rounded-sm p-6 sm:p-12 lg:p-20 relative min-h-[600px] sm:min-h-[720px] lg:min-h-[800px] flex items-center justify-center overflow-visible bg-cover bg-center"
+        style={{
+          backgroundImage: `url('https://images.stripeassets.com/fzn2n1nzq965/5dQAw5oJf3TOO1Jt6IKDRH/f391594c11f38d821259acdd3412a7a6/platform-graphic-background_2x.png?w=1632&fm=webp&q=90')`
+        }}
+      >
+        
+        {/* MAIN BROWSER WINDOW CONTAINER */}
+        <div className="bg-white rounded-sm shadow-2xl w-full max-w-4xl border border-gray-200/80 relative z-10 flex flex-col overflow-hidden">
+          
+          {/* Browser Top URL/Control Bar */}
+          <div className="flex items-center p-4 border-b border-gray-100 bg-white relative">
+            <div className="flex gap-1.5 absolute left-4">
               <span className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
               <span className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
               <span className="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
-              <span className="text-[10px] sm:text-xs text-gray-400 ml-4 bg-gray-50 px-3 py-0.5 rounded border border-gray-100/60 w-36 sm:w-56 truncate">
-                dashboard.yourplatform.com
-              </span>
+            </div>
+            <div className="text-[11px] sm:text-xs text-gray-400 mx-auto bg-gray-50 px-8 py-1 rounded-md border border-gray-200/60 w-44 sm:w-64 text-center truncate font-sans">
+              dashboard.zenflow.com
+            </div>
+          </div>
+
+          {/* Inner Dashboard Grid Application Layout */}
+          <div className="grid grid-cols-12 min-h-[440px]">
+            
+            {/* Sidebar (Zenflow Core Brand Column) */}
+            <div className="col-span-3 bg-[#4a154b] p-5 text-white space-y-6 hidden sm:block text-left">
+              <div className="flex items-center gap-2 mb-2">
+                <div className="w-5 h-5 bg-[#e33fa1] rounded-full flex items-center justify-center text-[10px] font-bold">Z</div>
+                <span className="font-bold text-sm tracking-wide">Zenflow</span>
+              </div>
+              <nav className="space-y-3.5 text-xs font-medium text-[#adbdcc]">
+                <div className="hover:text-white cursor-pointer transition-colors">Home</div>
+                <div className="text-[#ff66c4] font-semibold cursor-pointer border-l-2 border-[#ff66c4] pl-2.5 -ml-2.5">Payments</div>
+                <div className="hover:text-white cursor-pointer transition-colors">Reporting</div>
+                <div className="hover:text-white cursor-pointer transition-colors">Settings</div>
+              </nav>
             </div>
 
-            <div className="grid grid-cols-12 gap-4">
-              <div className="hidden sm:block col-span-3 space-y-3 pr-2 border-r border-gray-50/50">
-                <div className="h-5 w-16 bg-indigo-100/70 rounded"></div>
-                <div className="h-3 w-full bg-indigo-50/50 rounded"></div>
-                <div className="h-3 w-5/6 bg-gray-100 rounded"></div>
-              </div>
-              <div className="col-span-12 sm:col-span-9 space-y-4">
-                <div className="h-5 w-32 bg-gray-100 rounded"></div>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="border border-indigo-50 rounded-lg p-2.5 bg-indigo-50/10">
-                    <span className="text-[9px] uppercase text-gray-400 block font-bold">Balances</span>
-                    <span className="text-sm font-bold text-gray-700">$820.58</span>
+            {/* Main Dashboard Interaction Hub */}
+            <div className="col-span-12 sm:col-span-9 p-6 sm:p-8 bg-gray-50/40 space-y-5 text-left">
+              <h2 className="text-base font-semibold text-[#e33fa1]">Hello, Daybreak Yoga</h2>
+              
+              {/* Dynamic Action Banner Notification */}
+              <div className="bg-white border border-pink-100 rounded-xl p-3.5 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-sm">
+                <div className="space-y-0.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#e33fa1]"></span>
+                    <span className="text-[10px] font-bold text-[#e33fa1] uppercase tracking-wider">Action required</span>
                   </div>
-                  <div className="border border-gray-100 rounded-lg p-2.5">
-                    <span className="text-[9px] uppercase text-gray-400 block font-bold">Financing</span>
-                    <span className="text-xs font-semibold text-indigo-600">Pre-qualified</span>
-                  </div>
+                  <p className="text-[11px] text-gray-600 font-medium">To make sure your business is supportable, we need to collect additional information.</p>
                 </div>
-                <div className="border border-gray-100 rounded-lg p-3 space-y-2">
-                  <div className="h-3.5 w-24 bg-gray-100 rounded"></div>
-                  <div className="h-2.5 w-full bg-gray-50 rounded"></div>
-                </div>
+                <button className="bg-[#fff0fa] hover:bg-[#ffe2f5] text-[#e33fa1] text-[11px] font-bold px-3.5 py-1.5 rounded-lg border border-pink-200/60 transition-colors shrink-0">
+                  Add information
+                </button>
               </div>
-            </div>
 
-            {/* FLOATING BOXES: Mobile par hidden (`hidden md:block`) */}
-            <div className="hidden md:block absolute -top-10 -right-8 lg:-right-12 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-gray-100 max-w-xs z-20 text-xs">
-              <p className="font-bold text-[#0a2540] text-[13px]">Notification banner</p>
-              <code className="block mt-2 text-[11px] text-indigo-600 bg-indigo-50/60 p-2 rounded-lg font-mono">
-                stripe.components.create("notification-banner");
-              </code>
-            </div>
-            <div className="hidden md:block absolute top-1/4 -left-12 lg:-left-16 bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-xl border border-gray-100 max-w-xs z-20 text-xs">
-              <p className="font-bold text-[#0a2540] text-[13px]">Payouts</p>
-              <code className="block mt-2 text-[11px] text-indigo-600 bg-indigo-50/60 p-2 rounded-lg font-mono">
-                stripe.components.create("payouts");
-              </code>
+              {/* Functional Information Display Split Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Total Account Balances Block */}
+                <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex flex-col justify-between min-h-[135px]">
+                  <div>
+                    <span className="text-[10px] text-gray-400 block font-semibold tracking-wide uppercase">Total balance</span>
+                    <span className="text-2xl font-bold text-gray-800 mt-0.5 block">$820.56</span>
+                    <span className="text-[10px] text-gray-400 block mt-1">Available to pay out <span className="text-[#e33fa1] font-semibold">$341.80</span></span>
+                  </div>
+                  <button className="mt-3 w-full bg-[#fff0fa] hover:bg-[#ffe2f5] text-[#e33fa1] text-[11px] font-bold py-1.5 rounded-lg border border-pink-100 transition-colors">
+                    Pay out
+                  </button>
+                </div>
+
+                {/* Capital/Financing Status Display Block */}
+                <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm flex flex-col justify-between min-h-[135px]">
+                  <div>
+                    <span className="text-[10px] text-gray-400 block font-semibold tracking-wide uppercase">Expires on Jan 12</span>
+                    <h3 className="text-[11px] font-bold text-gray-800 mt-1 leading-normal">You're pre-qualified for up to $37,000 in financing</h3>
+                    <p className="text-[10px] text-gray-400 mt-0.5 leading-normal">If approved, you'll receive funds in as little as one to two business days.</p>
+                  </div>
+                  <button className="mt-3 w-full bg-[#fff0fa] hover:bg-[#ffe2f5] text-[#e33fa1] text-[11px] font-bold py-1.5 rounded-lg border border-pink-100 transition-colors">
+                    Start application
+                  </button>
+                </div>
+              </div>
+
+              {/* Real-time Ledger Content Preview Area */}
+              <div className="bg-white border border-gray-100 rounded-xl p-4 shadow-sm">
+                <h4 className="text-xs font-bold text-gray-700 mb-3">Payments</h4>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-[11px] text-left text-gray-500 min-w-[400px]">
+                    <thead>
+                      <tr className="border-b border-gray-100 text-gray-400 font-medium">
+                        <th className="pb-2 font-semibold">Amount</th>
+                        <th className="pb-2 font-semibold">Status</th>
+                        <th className="pb-2 font-semibold">Payment Method</th>
+                        <th className="pb-2 font-semibold">Description</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-50 font-medium">
+                      <tr>
+                        <td className="py-2.5 text-gray-800 font-bold">$150.00</td>
+                        <td className="py-2.5"><span className="bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded-md text-[10px] font-semibold border border-emerald-100">Succeeded</span></td>
+                        <td className="py-2.5 text-gray-600">Mastercard ••••1234</td>
+                        <td className="py-2.5 text-gray-500">Single class</td>
+                      </tr>
+                      <tr>
+                        <td className="py-2.5 text-gray-800 font-bold">$85.00</td>
+                        <td className="py-2.5"><span className="bg-gray-100 text-gray-600 px-2 py-0.5 rounded-md text-[10px] font-semibold border border-gray-200">Disputed</span></td>
+                        <td className="py-2.5 text-gray-600">Visa ••••4010</td>
+                        <td className="py-2.5 text-gray-500">Single class</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
-      </section>
+
+        {/* FLOATING BLUEPRINT BADGES (Shifted Outside for Global Stack Layering) */}
+        
+        {/* 1. Notification Banner Overlap - Top Right over Browser Window border */}
+        <div className="hidden lg:block absolute top-[6%] right-[6%] bg-white p-4 rounded-xl shadow-2xl border border-gray-200/80 max-w-[410px] z-30 text-left">
+          <p className="font-bold text-gray-800 text-[12px]">Notification banner</p>
+          <p className="text-[10px] text-gray-500 mt-0.5">Show a banner listing required actions for risk and onboarding.</p>
+          <code className="block mt-2 text-[10.5px] bg-[#f8fafc] p-2 rounded-lg font-mono whitespace-nowrap border border-gray-100">
+            <span className="text-[#1e293b]">stripeConnectInstance.</span>
+            <span className="text-[#2563eb]">create</span>
+            <span className="text-[#1e293b]">(</span>
+            <span className="text-[#16a34a]">'notification-banner'</span>
+            <span className="text-[#1e293b]">);</span>
+          </code>
+        </div>
+
+        {/* 2. Payouts Context Overlap - Mid Left overlapping the sidebar & balance */}
+        <div className="hidden lg:block absolute top-[40%] left-[4%] bg-white p-4 rounded-xl shadow-2xl border border-gray-200/80 max-w-[410px] z-30 text-left">
+          <p className="font-bold text-gray-800 text-[12px]">Payouts</p>
+          <p className="text-[10px] text-gray-500 mt-0.5">Show total balance and allow a connected account to initiate payouts.</p>
+          <code className="block mt-2 text-[10.5px] bg-[#f8fafc] p-2 rounded-lg font-mono whitespace-nowrap border border-gray-100">
+            <span className="text-[#1e293b]">stripeConnectInstance.</span>
+            <span className="text-[#2563eb]">create</span>
+            <span className="text-[#1e293b]">(</span>
+            <span className="text-[#16a34a]">'payouts'</span>
+            <span className="text-[#1e293b]">);</span>
+          </code>
+        </div>
+
+        {/* 3. Payments Ledger Overlap - Bottom Left near table sidebar boundary */}
+        <div className="hidden lg:block absolute bottom-[14%] left-[3%] bg-white p-4 rounded-xl shadow-2xl border border-gray-200/80 max-w-[410px] z-30 text-left">
+          <p className="font-bold text-gray-800 text-[12px]">Payments</p>
+          <p className="text-[10px] text-gray-500 mt-0.5">Show a list of payments with export, refund, and dispute capabilities.</p>
+          <code className="block mt-2 text-[10.5px] bg-[#f8fafc] p-2 rounded-lg font-mono whitespace-nowrap border border-gray-100">
+            <span className="text-[#1e293b]">stripeConnectInstance.</span>
+            <span className="text-[#2563eb]">create</span>
+            <span className="text-[#1e293b]">(</span>
+            <span className="text-[#16a34a]">'payments'</span>
+            <span className="text-[#1e293b]">);</span>
+          </code>
+        </div>
+
+        {/* 4. Capital Financing Promotion Overlap - Lower Right Area */}
+        <div className="hidden lg:block absolute bottom-[32%] right-[4%] bg-white p-4 rounded-xl shadow-2xl border border-gray-200/80 max-w-[410px] z-30 text-left">
+          <p className="font-bold text-gray-800 text-[12px]">Capital financing promotion</p>
+          <p className="text-[10px] text-gray-500 mt-0.5">Show a connected account's financing offer and allow them to apply.</p>
+          <code className="block mt-2 text-[10.5px] bg-[#f8fafc] p-2 rounded-lg font-mono whitespace-nowrap border border-gray-100">
+            <span className="text-[#1e293b]">stripeConnectInstance.</span>
+            <span className="text-[#2563eb]">create</span>
+            <span className="text-[#1e293b]">(</span>
+            <span className="text-[#16a34a]">'capital-financing-promotion'</span>
+            <span className="text-[#1e293b]">);</span>
+          </code>
+        </div>
+
+      </div>
+    </section>
 
       {/* ======================================================================
           SECTION 3: THREE COLUMN FEATURES

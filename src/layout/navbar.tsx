@@ -1,9 +1,12 @@
 // Responsive Navbar.tsx
 "use client";
 import { useState,useEffect } from "react";
-import { Menu,X } from "lucide-react";
+import { Menu,X } from "lucide-react"
+
+
 
 const navItems=[{label:"Products",hasDropdown:true},{label:"Solutions",hasDropdown:true},{label:"Developers",hasDropdown:true},{label:"Resources",hasDropdown:true},{label:"Pricing",hasDropdown:false}];
+
 
 export default function Navbar(){
 const [activeItem,setActiveItem]=useState<string|null>(null);

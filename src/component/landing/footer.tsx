@@ -3,7 +3,7 @@ import { ArrowRight, DollarSign, Terminal, Globe } from "lucide-react";
 
 export default function Footer() {
   return (
-    <div className="w-full bg-[#f8fbfd] font-sans text-[#425466] selection:bg-[#635bff]/20">
+    <div className="w-full bg-[#f8fbfd] font-sans text-[#425466] selection:bg-[#635bff]/20 ">
       {/* 1. CTA SECTION: Ready to get started? */}
       <section className="max-w-[1080px] mx-auto px-6 pt-20 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
@@ -17,11 +17,11 @@ export default function Footer() {
               package for your business.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
-              <button className="inline-flex items-center justify-center gap-1 bg-[#635bff] hover:bg-[#0a2540] text-white text-[14px] font-semibold py-[7px] px-4 rounded-full transition-colors duration-200 group">
+              <button className="inline-flex items-center justify-center gap-1 bg-[#635bff] hover:bg-[#0a2540] text-white text-[12px] font-[500] py-[7px] px-4 rounded-sm transition-colors duration-200 group">
                 Start now
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-0.5" />
               </button>
-              <button className="inline-flex items-center justify-center border border-[#d9e2ec] hover:border-[#0a2540] bg-white text-[#0a2540] text-[14px] font-semibold py-[7px] px-4 rounded-full transition-colors duration-200">
+              <button className="inline-flex items-center justify-center border border-[#d9e2ec] hover:border-[#0a2540] bg-white text-[#635bff] text-[12px] font-[500] py-[7px] px-4 rounded-sm  transition-colors duration-200">
                 Contact sales
               </button>
             </div>
@@ -81,7 +81,7 @@ export default function Footer() {
             <h5 className="font-bold text-[#0a2540] text-[13px]">
               Products and pricing
             </h5>
-            <ul className="space-y-2 text-[13px] text-[#425466]">
+            <ul className="space-y-2 text-[11px] text-[#425466]">
               {[
                 "Pricing",
                 "Atlas",
@@ -134,7 +134,7 @@ export default function Footer() {
               <h5 className="font-bold text-[#0a2540] text-[13px]">
                 Solutions
               </h5>
-              <ul className="space-y-2 text-[13px] text-[#425466]">
+              <ul className="space-y-2 text-[11px] text-[#425466]">
                 {[
                   "Enterprise",
                   "Startups",
@@ -173,7 +173,7 @@ export default function Footer() {
               <h5 className="font-bold text-[#0a2540] text-[13px]">
                 Developers
               </h5>
-              <ul className="space-y-2 text-[13px] text-[#425466]">
+              <ul className="space-y-2 text-[11px] text-[#425466]">
                 {[
                   "Documentation",
                   "API reference",
@@ -201,7 +201,7 @@ export default function Footer() {
               <h5 className="font-bold text-[#0a2540] text-[13px]">
                 Integrations and custom solutions
               </h5>
-              <ul className="space-y-2 text-[13px] text-[#425466]">
+              <ul className="space-y-2 text-[11px] text-[#425466]">
                 {[
                   "Stripe App Marketplace",
                   "Stripe Partner ecosystem",
@@ -223,7 +223,7 @@ export default function Footer() {
               <h5 className="font-bold text-[#0a2540] text-[13px]">
                 Resources
               </h5>
-              <ul className="space-y-2 text-[13px] text-[#425466]">
+              <ul className="space-y-2 text-[11px] text-[#425466]">
                 {[
                   "Product roadmap",
                   "Guides",
@@ -256,7 +256,7 @@ export default function Footer() {
           <div className="space-y-12 relative z-10 md:pl-4">
             <div className="space-y-4">
               <h5 className="font-bold text-[#0a2540] text-[13px]">Company</h5>
-              <ul className="space-y-2 text-[13px] text-[#425466]">
+              <ul className="space-y-2 text-[11px] text-[#425466]">
                 {["Jobs", "Newsroom", "Stripe Press", "Contact sales"].map(
                   (item) => (
                     <li key={item}>
@@ -274,7 +274,7 @@ export default function Footer() {
 
             <div className="space-y-4">
               <h5 className="font-bold text-[#0a2540] text-[13px]">Support</h5>
-              <ul className="space-y-2 text-[13px] text-[#425466]">
+              <ul className="space-y-2 text-[11px] text-[#425466]">
                 {[
                   "Get support",
                   "Managed support plans",
@@ -323,7 +323,7 @@ export default function Footer() {
             <p className="pl-5 text-gray-400">© 2026 Stripe, Inc.</p>
           </div>
           {/* Tiny bottom right accent matching image corner asset */}
-          <div className="w-8 h-6 bg-[#0a2540] rounded-tl-sm self-end sm:self-auto hidden md:block opacity-90" />
+<div className="w-8 h-6 bg-[#0a2540] hidden md:block opacity-90 transform -skew-y-[15deg]" />
         </div>
       </footer>
     </div>

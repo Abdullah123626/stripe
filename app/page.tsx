@@ -15,22 +15,23 @@ import StripeSection from "@/src/component/landing/stripe-section";
 import StripeStartupSection from "@/src/component/landing/stripe-startup";
 import Navbar from "@/src/layout/navbar";
 import Footer from "@/src/component/landing/footer";
+import { GlobeCdn } from "@/src/component/landing/checking";
 export default function Home() {
   return (
     <div>
       <div className="w-full max-w-7xl mx-auto border-y border-gray-200/80 sm:border-x sm:rounded-2xl overflow-hidden py-6 sm:py-10 md:py-14 flex flex-col items-center gap-6 md:gap-8 bg-white px-4 sm:px-8">
         {" "}
-        {/*nav bar  */}
+        {/* 1st nav bar  */}
         <Navbar />
-        {/*  hero section */}
+        {/*2nd  hero section */}
         <HeroSection />
-        {/* floexible solution */}
+        {/*3rd floexible solution */}
         <FlexibleSolution />
-        {/* premium feature */}
+        {/* 4th premium feature */}
         <PremiumFeatureGrid />
-        {/* stripe plateform */}
+        {/*5th stripe plateform */}
         <StripePlatformGrid />
-        {/* stripe backbone */}
+        {/*6th stripe backbone */}
         <StripeBackboneGrid />
         {/* text */}
         <div className="w-full flex justify-start px-5 sm:px-8 md:px-10 lg:px-12 mt-5 sm:mt-6">
@@ -44,22 +45,22 @@ export default function Home() {
             </span>
           </p>
         </div>
-        {/* hertzshow case  */}
+        {/*7th hertzshow case  */}
         <HertzShowcase />
-        {/* stripe expect section */}
+        {/*8th stripe expect section */}
         <StripeExpertSection />
-        {/* stripe startup section  */}
+        {/*9th stripe startup section  */}
         <StripeStartupSection />
-        {/* stripe section */}
-        {/* <StripeSection/> */}
-        {/* stripe lannding */}
+        {/*10th stripe lannding */}
         <StripeLanding />
-        {/* stripe integerated  */}
+        {/*11th stripe integerated  */}
         <StripeIntegrated />
-        {/* stripe book component  */}
+        {/*12th stripe book component  */}
         <StripeBook />
         {/* stripe clone  */}
         <Footer />
+<GlobeCdn/>
+        
       </div>
     </div>
   );

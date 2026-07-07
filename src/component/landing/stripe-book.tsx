@@ -18,7 +18,7 @@ export default function StripeBook() {
         </div>
 
         {/* --- Main Responsive Layout Grid --- */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 items-stretch overflow-hidden">
           
           {/* Left Block: Maroon Container housing the Book Mockup asset */}
           <div className="md:col-span-5 bg-[#6b0909] p-8 flex items-center justify-center min-h-[340px] sm:min-h-[420px] relative overflow-hidden group shadow-sm">
@@ -33,7 +33,7 @@ export default function StripeBook() {
           </div>
 
           {/* Right Block: Content Meta Information Panel */}
-          <div className="md:col-span-7 flex flex-col justify-between py-1 relative">
+          <div className="md:col-span-7 bg-[#f8fbfd] flex flex-col justify-between p-6 sm:p-8 lg:p-12 relative">
             
             {/* Top decorative Stripe Prness structural floating badge stamp layout */}
             <div className="absolute top-0 right-0 hidden sm:block w-14 h-14 opacity-90 select-none text-[#0a2540]">
@@ -58,7 +58,7 @@ export default function StripeBook() {
               </div>
 
               <p className="text-xs sm:text-[14px] text-[#425466] leading-relaxed font-normal font-['Jost',sans-serif]">
-                Lefèvre's 1923 fictionalized biography follows trader Jesse Livermore from bucket shops to Wall Street, where he makes and loses fortunes by confusing luck with skill, testing positions in increments, and learning when to trust price over opinion. The <span className="underline decoration-gray-300 underline-offset-2 font-medium text-gray-800">book's</span> enduring insight is that markets change faster than human nature, making self-discipline as important as information.
+                Lefèvre&apos;s 1923 fictionalized biography follows trader Jesse Livermore from bucket shops to Wall Street, where he makes and loses fortunes by confusing luck with skill, testing positions in increments, and learning when to trust price over opinion. The <span className="underline decoration-gray-300 underline-offset-2 font-medium text-gray-800">book&apos;s</span> enduring insight is that markets change faster than human nature, making self-discipline as important as information.
               </p>
             </div>
 
